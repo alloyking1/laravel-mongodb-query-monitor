@@ -1,0 +1,25 @@
+{
+    "name": "moses/laravel-mongodb-query-monitor",
+    "description": "Monitor MongoDB query performance in Laravel applications",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+          "MosesAnu\\MongoQueryMonitor\\": "src/"
+        }
+      },
+      "extra": {
+        "laravel": {
+          "providers": [
+            "MosesAnu\\MongoQueryMonitor\\MongoQueryMonitorServiceProvider"
+          ]
+        }
+      },
+    "authors": [
+        {
+            "name": "alloyking1",
+            "email": "alloyking1@gmail.com"
+        }
+    ],
+    "require": {}
+}
