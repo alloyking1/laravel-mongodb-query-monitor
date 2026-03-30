@@ -141,6 +141,16 @@ In the current version, this threshold is hard-coded in `QueryMonitorService`.
 - CLI/queue jobs are not tracked unless you manually wire monitoring for those flows.
 - No migration is required because logs are inserted directly into MongoDB collection `performance_logs`.
 
+## Contributing
+
+Contributions are welcome and appreciated.
+
+- Open an issue for bugs, questions, or feature requests.
+- Submit a pull request for fixes, tests, or improvements.
+- Improve documentation and examples to help other users.
+
+If this package helps you, please consider starring the repository to support the project and help others discover it.
+
 ## License
 
 MIT
