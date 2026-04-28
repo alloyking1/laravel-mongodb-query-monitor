@@ -8,15 +8,20 @@ use MongoDB\BSON\UTCDateTime;
 class QueryMonitorService
 {
     protected array $queries = [];
-    protected int $slowThreshold = 200;
 
     public function record(string $collection, string $operation, float $duration): void
     {
+        $isSlow = $duration > config('query-monitor.slow_threshold', 200);
+
+        if (config('query-monitor.record_only_slow_queries', false) && ! $isSlow) {
+            return;
+        }
+
         $this->queries[] = [
             'collection' => $collection,
             'operation' => $operation,
             'duration_ms' => $duration,
-            'is_slow' => $duration > $this->slowThreshold
+            'is_slow' => $isSlow
         ];
     }
 
