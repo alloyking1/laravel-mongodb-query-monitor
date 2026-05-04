@@ -11,6 +11,10 @@ class MongoQueryMonitorServiceProvider extends ServiceProvider
 {
     public function register()
     {
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/query-monitor.php', 'query-monitor'
+        );
+
         // Share one monitor instance per request lifecycle.
         $this->app->singleton(QueryMonitorService::class, function () {
             return new QueryMonitorService();
@@ -19,6 +23,12 @@ class MongoQueryMonitorServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        if ($this->app->runningInConsole()) {
+             $this->publishes([
+                __DIR__.'/../stubs/query-monitor.php' => config_path('query-monitor.php'),
+            ], 'query-monitor-config');
+        }
+
         Monitoring\addSubscriber(new MongoCommandSubscriber());
     }
 }

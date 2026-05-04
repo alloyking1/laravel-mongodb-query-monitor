@@ -40,9 +40,17 @@ Laravel package discovery will automatically register the service provider.
 
 ## Configuration
 
-This package currently does not expose user-facing config options.
+If you want to change configuration you can publish package's configuration file using the vendor:publish command:
 
-The `config/query-monitor.php` file exists but is empty in this version, and there is no publish step required.
+```bash
+php artisan vendor:publish --provider="MosesAnu\MongoQueryMonitor\MongoQueryMonitorServiceProvider"
+```
+
+If you are going to record only slow queries you must update your `config/query-monitor.php` file.
+
+```bash
+'record_only_slow_queries' => true,
+```
 
 ## Usage
 
