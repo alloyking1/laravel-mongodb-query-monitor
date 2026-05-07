@@ -27,5 +27,15 @@ return [
     |
     */
 
-    'slow_threshold' => 200
+    'slow_threshold' => 200,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Clean After Days
+    |--------------------------------------------------------------------------
+    | This value defines the number of days after which old query logs will be
+    | automatically cleaned up. You can adjust this value based on your needs.
+    |
+    */
+    'clean_after_days' => 30,
 ];

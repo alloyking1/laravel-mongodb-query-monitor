@@ -135,6 +135,25 @@ Queries are flagged as slow when duration is greater than `200ms`.
 
 In the current version, this threshold is hard-coded in `QueryMonitorService`.
 
+## Remove Records
+
+When the package has run for a while, you may have recorded many queries. The provided artisan command cleans recorded queries older than the number of days specified in the `clean_after_days` config key, or you can specify a custom value with the command option.
+
+```bash
+php artisan mongo-query-monitor:clean --days=14
+```
+
+You may also use Laravel's scheduler to run the clean up command.
+
+```php
+// routes/console.php
+
+use MosesAnu\MongoQueryMonitor\Commands\CleanMongoQueryMonitorCommand;
+use Illuminate\Support\Facades\Schedule;
+
+Schedule::command(new CleanMongoQueryMonitorCommand)->daily();
+```
+
 ## Quick Verification
 
 1. Enable middleware.
