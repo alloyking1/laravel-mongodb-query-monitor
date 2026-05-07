@@ -131,9 +131,7 @@ Each captured query is stored as one MongoDB document:
 
 ## Slow Query Threshold
 
-Queries are flagged as slow when duration is greater than `200ms`.
-
-In the current version, this threshold is hard-coded in `QueryMonitorService`.
+Queries are considered slow if their duration exceeds the `slow_threshold` value (default: 200ms) in the `config/query-monitor.php` file. You can change this value after publishing the configuration file.
 
 ## Quick Verification
 
