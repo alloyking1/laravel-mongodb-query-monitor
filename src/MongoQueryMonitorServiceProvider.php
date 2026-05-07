@@ -4,6 +4,7 @@ namespace MosesAnu\MongoQueryMonitor;
 
 use Illuminate\Support\ServiceProvider;
 use MongoDB\Driver\Monitoring;
+use MosesAnu\MongoQueryMonitor\Commands\CleanMongoQueryMonitorCommand;
 use MosesAnu\MongoQueryMonitor\Monitoring\MongoCommandSubscriber;
 use MosesAnu\MongoQueryMonitor\Services\QueryMonitorService;
 
@@ -27,6 +28,9 @@ class MongoQueryMonitorServiceProvider extends ServiceProvider
              $this->publishes([
                 __DIR__.'/../stubs/query-monitor.php' => config_path('query-monitor.php'),
             ], 'query-monitor-config');
+            $this->commands([
+                CleanMongoQueryMonitorCommand::class,
+            ]);
         }
 
         Monitoring\addSubscriber(new MongoCommandSubscriber());
